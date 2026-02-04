@@ -9,9 +9,12 @@ interface State {
 
 const reducer = (state: State = { count: 0 }, action: any): State => {
   switch (action.type) {
-    case "INC": return { count: state.count + 1 };
-    case "DEC": return { count: state.count - 1 };
-    default: return state;
+    case "INC":
+      return { count: state.count + 1 };
+    case "DEC":
+      return { count: state.count - 1 };
+    default:
+      return state;
   }
 };
 
@@ -24,9 +27,14 @@ function Counter() {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 30 }}>{count}</Text>
-      <Button title="+" onPress={() => dispatch({ type: "INC" })} />
-      <Button title="-" onPress={() => dispatch({ type: "DEC" })} />
+      <Text style={{ fontSize: 30, color: "#000", marginBottom: 20 }}>
+        {count}
+      </Text>
+
+      <View style={{ gap: 10 }}>
+        <Button title="+" onPress={() => dispatch({ type: "INC" })} />
+        <Button title="-" onPress={() => dispatch({ type: "DEC" })} />
+      </View>
     </View>
   );
 }
@@ -35,7 +43,10 @@ function Counter() {
 export default function ReduxScreen() {
   return (
     <Provider store={store}>
-      <Counter />
+      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+        {/* White background */}
+        <Counter />
+      </View>
     </Provider>
   );
 }

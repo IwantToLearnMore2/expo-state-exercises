@@ -16,14 +16,15 @@ export default function TodoScreen() {
   };
 
   return (
-    <View style={{ padding: 20 }}>
-      <Text style={{ fontSize: 22, marginBottom: 10 }}>Todo List (useState)</Text>
+    <View style={{ flex: 1, padding: 20, backgroundColor: "#fff" }}> {/* White background */}
+      <Text style={{ fontSize: 22, marginBottom: 10, color: "#000" }}>Todo List (UseState)</Text> {/* Black text for contrast */}
 
       <TextInput
         value={task}
         onChangeText={setTask}
         placeholder="Enter task"
-        style={{ borderWidth: 1, padding: 10, marginBottom: 10 }}
+        placeholderTextColor="#888" // lighter gray placeholder
+        style={{ borderWidth: 1, padding: 10, marginBottom: 10, borderColor: "#ccc", color: "#000" }}
       />
 
       <Button title="Add Task" onPress={addTask} />
@@ -32,7 +33,7 @@ export default function TodoScreen() {
         data={todos}
         renderItem={({ item, index }) => (
           <TouchableOpacity onPress={() => removeTask(index)}>
-            <Text style={{ marginTop: 10 }}>{item} ❌</Text>
+            <Text style={{ marginTop: 10, color: "#000" }}>{item} ❌</Text> {/* Black text */}
           </TouchableOpacity>
         )}
         keyExtractor={(_, index) => index.toString()}
